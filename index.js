@@ -22,7 +22,10 @@ app.use(cors({
   credentials: true,
 }));
 dotenv.config();
-mongoose.connect(process.env.MONGO_CONNECT_URL);
+mongoose.connect(process.env.MONGO_CONNECT_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 const jwtSecret = process.env.JWT_SECRET
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
